@@ -5,7 +5,7 @@ import {NavLink} from "react-router-dom";
 import s from './Button.module.scss';
 import {ButtonProps} from "./Button.props";
 
-export const Button = ({href, type = 'button', children, className, ...props}: PropsWithChildren<ButtonProps>): JSX.Element => {
+export const Button = ({href, type = 'button', children, className, icon, ...props}: PropsWithChildren<ButtonProps>): JSX.Element => {
     if (href && href.length) {
         return (
             <NavLink to={href} className={cn(className)}>
@@ -22,7 +22,7 @@ export const Button = ({href, type = 'button', children, className, ...props}: P
             type={type}
             {...props}
         >
-            {children}
+            {icon || children}
         </button>
     )
 }

@@ -43,5 +43,23 @@ a {
   margin: 85px auto 0;
   border-radius: var(--radius-lg);
   background-color: var(--c-white);
-  max-width: 1080px;
+  max-width: calc(100% - (85px * 2));
+
+  &.drawer {
+    position: relative;
+    overflow: hidden;
+    max-height: calc(100vh - 85px);
+
+    &::after {
+      content: "";
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: 1;
+      width: 100%;
+      height: 100%;
+      background: #000000;
+      opacity: 0.5;
+    }
+  }
 }

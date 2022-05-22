@@ -1,0 +1,13 @@
+.aside {
+  position: fixed;
+  top: 0;
+  right: -100%;
+  z-index: 2;
+  width: 385px;
+  height: 100vh;
+  background-color: var(--c-white);
+}
+
+.open {
+  right: 0;
+}

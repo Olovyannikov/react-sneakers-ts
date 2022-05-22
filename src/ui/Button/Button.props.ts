@@ -1,8 +1,8 @@
-import {ButtonHTMLAttributes, DetailedHTMLProps} from "react";
+import {ButtonHTMLAttributes, DetailedHTMLProps, ReactNode} from "react";
 
 type ButtonShape = 'round' | 'default';
-type ButtonIconElement = SVGAElement | HTMLImageElement | HTMLPictureElement;
-type ButtonIconPosition = 'left' | 'right';
+type ButtonIconElement = ReactNode;
+type ButtonIconPosition = 'left' | 'right' | 'center';
 
 export interface ButtonProps extends DetailedHTMLProps<ButtonHTMLAttributes<HTMLButtonElement>, HTMLButtonElement> {
     href?: string;

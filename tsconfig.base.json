@@ -24,7 +24,8 @@
       "@/hooks": ["hooks/index.tsx"],
       "@/lib": ["lib/index.ts"],
       "@/models": ["models/index.ts"],
-      "@/page-components": ["page-components/index.tsx"]
+      "@/page-components": ["page-components/index.tsx"],
+      "@/context": ["context/index.tsx"]
     }
   },
   "include": ["src"]
