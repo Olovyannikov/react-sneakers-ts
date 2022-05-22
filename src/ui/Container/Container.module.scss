@@ -1,0 +1,9 @@
+.container {
+  --width: 1080px;
+  --offset: 60px;
+
+  margin: 0 auto;
+  padding: 0 var(--offset);
+  width: 100%;
+  max-width: var(--width);
+}

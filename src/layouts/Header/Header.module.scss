@@ -1,0 +1,12 @@
+.header {
+  padding-top: var(--space-xl);
+  padding-bottom: var(--space-xl);
+  border-bottom: 1px solid var(--c-grey-300);
+  margin-bottom: var(--space-xl);
+}
+
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}

@@ -1,0 +1,15 @@
+.list {
+  display: flex;
+  gap: var(--space-lg);
+
+  li {
+    line-height: 0;
+  }
+}
+
+.cart {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  font: var(--font-sm);
+}
