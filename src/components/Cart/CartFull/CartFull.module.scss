@@ -1,0 +1,48 @@
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+}
+
+.item {
+  display: grid;
+  align-items: center;
+  grid-template-columns: 70px 1fr 32px;
+
+  picture {
+    font-size: 0;
+    grid-column: 1 / 2;
+    grid-row: 1 / span 2;
+  }
+
+  img {
+    font-size: 0;
+    width: 70px;
+    height: 70px;
+    object-fit: contain;
+  }
+
+  p, b {
+    margin: 0 12px 0 21px;
+    grid-column: 2 / 3;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 17px;
+  }
+
+  b {
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 17px;
+  }
+
+  button {
+    width: 32px;
+    height: 32px;
+    grid-row: -1 / span 2;
+    grid-column: 3 / 4;
+    background: #FFFFFF;
+    border: 1px solid #DBDBDB;
+    border-radius: 8px;
+  }
+}

@@ -1,8 +1,8 @@
 import {PropsWithChildren, useContext} from "react";
-import {LayoutProps} from "./props";
+import {DrawerCtx} from '@/context';
 import {Header} from "./Header";
 import {Aside} from "./Aside/Aside";
-import {DrawerContext, DrawerCtx} from '../context';
+import {LayoutProps} from "./props";
 
 export const Layout = ({children}: PropsWithChildren<LayoutProps>): JSX.Element => {
     const {isOpen} = useContext(DrawerCtx);

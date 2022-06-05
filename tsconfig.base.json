@@ -25,7 +25,8 @@
       "@/lib": ["lib/index.ts"],
       "@/models": ["models/index.ts"],
       "@/page-components": ["page-components/index.tsx"],
-      "@/context": ["context/index.tsx"]
+      "@/context": ["context/index.tsx"],
+      "@/store/*": ["store/*"]
     }
   },
   "include": ["src"]

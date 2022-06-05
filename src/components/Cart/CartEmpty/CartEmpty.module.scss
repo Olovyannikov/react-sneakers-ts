@@ -1,0 +1,30 @@
+.empty {
+  width: 285px;
+  height: 95vh;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.empty img {
+  display: block;
+  margin-bottom: var(--space-md);
+}
+
+.empty h3 {
+  margin: 0 0 var(--space-xs);
+  font: var(--font-bold);
+}
+
+.empty p {
+  margin: 0 0 40px;
+  font: var(--font-light);
+  opacity: 0.4;
+}
+
+.empty button {
+  max-width: 245px;
+}

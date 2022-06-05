@@ -1,3 +1,21 @@
 .btn {
-  color: red;
+
+}
+
+.none {
+
+}
+
+// colors
+.primary {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-xs);
+  border-radius: var(--radius-lg);
+  width: 100%;
+  min-height: 55px;
+  font: var(--font-btn);
+  color: var(--c-white);
+  background-color: var(--c-primary);
 }

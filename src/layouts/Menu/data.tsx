@@ -10,7 +10,8 @@ interface DataModel {
 
 export const data: DataModel[] = [
     {
-        id: 0, title: 'like',
+        id: 0,
+        title: 'like',
         icon: <HeartIcon/>
     },
     {

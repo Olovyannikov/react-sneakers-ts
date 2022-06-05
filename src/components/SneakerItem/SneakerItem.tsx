@@ -1,26 +1,32 @@
 import cn from "classnames";
-import {PropsWithChildren, useState} from "react";
+import {PropsWithChildren} from "react";
+
+import {useTypedDispatch, useTypedSelector} from "@/hooks";
+
+import {addToCart, addToFav, removeItemFromCart, removeItemFromFav} from "@/store/models/cart";
+import {getCart} from "@/store/models/cart/selectors";
 
 import {Button, Card} from "@/ui";
-import {ReactComponent as AddIcon} from './img/add.svg';
-import {ReactComponent as AddedIcon} from './img/added.svg';
-import {ReactComponent as FavIcon} from './img/fav.svg';
+import {AddIcon, AddedIcon, FavIcon} from '@/components';
 
 import s from './SneakerItem.module.scss';
 import {SneakerItemProps} from "./SneakerItem.props";
+import {getNormalPrice} from "../../lib/getNormalPrice";
 
 export const SneakerItem = ({item, className, ...props}: PropsWithChildren<SneakerItemProps>): JSX.Element => {
-    const [added, setAdded] = useState<boolean>(false);
-    const [favorite, setFavorite] = useState<boolean>(false);
+    const dispatch = useTypedDispatch();
+    const {cart, fav} = useTypedSelector(getCart);
 
-    const onAddBtnClickHandler = () => setAdded(!added);
-    const onFavoriteBtnClickHandler = () => setFavorite(!favorite);
+    const onAddBtnClickHandler = () =>
+        cart.includes(item) ? dispatch(removeItemFromCart(item)) : dispatch(addToCart(item));
+    const onFavoriteBtnClickHandler = () =>
+        fav.includes(item) ? dispatch(removeItemFromFav(item)) : dispatch(addToFav(item));
 
     return (
         <li className={cn(s.item, className)} {...props}>
             <Card>
                 <Button
-                    className={cn(s.btn, s.fav, favorite && s.inFav)}
+                    className={cn(s.btn, s.fav, fav.includes(item) && s.inFav)}
                     aria-label='Добавить в избранное'
                     icon={<FavIcon/>}
                     onClick={onFavoriteBtnClickHandler}
@@ -32,12 +38,12 @@ export const SneakerItem = ({item, className, ...props}: PropsWithChildren<Sneak
                 <div className={s.bottom}>
                     <div className={s.price}>
                         <span>Цена:</span>
-                        <b>{item.price} руб.</b>
+                        <b>{getNormalPrice(item.price)} руб.</b>
                     </div>
                     <Button
-                        className={cn(s.btn, added && s.added)}
+                        className={cn(s.btn, cart.includes(item) && s.added)}
                         aria-label='Добавить в корзину'
-                        icon={added ? <AddedIcon/> : <AddIcon/>}
+                        icon={cart.includes(item) ? <AddedIcon/> : <AddIcon/>}
                         onClick={onAddBtnClickHandler}
                     />
                 </div>
