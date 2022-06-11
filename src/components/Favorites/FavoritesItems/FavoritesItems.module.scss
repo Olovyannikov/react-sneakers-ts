@@ -1,0 +1,29 @@
+.container {
+
+  main & {
+    height: 65vh;
+  }
+}
+
+.list {
+  grid-template-columns: repeat(auto-fit, 210px);
+}
+
+.top {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+  margin-bottom: var(--space-xl);
+
+  h2 {
+    margin: 0;
+    font: var(--font-xl);
+  }
+
+  button {
+    width: 32px;
+    height: 32px;
+    border: 1px solid var(--c-grey-200);
+    border-radius: 8px;
+  }
+}

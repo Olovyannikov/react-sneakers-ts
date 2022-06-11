@@ -1,10 +1,33 @@
-import {createSlice, PayloadAction} from "@reduxjs/toolkit";
+import {createAsyncThunk, createSlice, PayloadAction} from "@reduxjs/toolkit";
 import {CartItem, CartState} from "./types";
+import {API} from "@/lib";
 
 const initialState: CartState = {
+    store: {
+        items: [],
+        isError: false,
+        isLoaded: false
+    },
     cart: [],
     fav: []
 }
+
+export const fetchCart = createAsyncThunk(
+    'cart/fetchCart',
+    async function(_, {rejectWithValue}) {
+        try {
+            const response = await fetch(API.getSneakers());
+
+            if (!response.ok) {
+                throw new Error('Server Error!');
+            }
+
+            return await response.json();
+        } catch (error) {
+            return rejectWithValue(error);
+        }
+    }
+);
 
 const cart = createSlice({
     name: 'cart',
@@ -21,6 +44,21 @@ const cart = createSlice({
         },
         removeItemFromFav(state: CartState, action: PayloadAction<CartItem>) {
             state.fav = state.fav.filter(item => item.id !== action.payload.id);
+        }
+    },
+    extraReducers: {
+        [fetchCart.fulfilled.type]: (state, action: PayloadAction<CartItem[]>) => {
+            state.store.items = action.payload;
+            state.store.isLoaded = true;
+            state.store.isError = false;
+        },
+        [fetchCart.pending.type]: (state) => {
+            state.store.isLoaded = false;
+            state.store.isError = false;
+        },
+        [fetchCart.rejected.type]: (state) => {
+            state.store.isLoaded = true;
+            state.store.isError = true;
         }
     }
 });

@@ -1,5 +1,5 @@
 import {ReactNode} from "react";
-import {IndexPage, CartPage} from '../pages/export';
+import {IndexPage, CartPage, FavoritesPage} from '../pages/export';
 
 interface RouterModel {
     path: string;
@@ -14,5 +14,9 @@ export const router: RouterModel[] = [
     {
         path: '/cart',
         component: <CartPage/>
+    },
+    {
+        path: '/favorites',
+        component: <FavoritesPage/>
     }
 ]

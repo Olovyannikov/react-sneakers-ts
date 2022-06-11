@@ -1,0 +1,28 @@
+.empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  max-width: 290px;
+  margin: 0 auto;
+
+  img {
+    margin-bottom: var(--space-md);
+  }
+
+  h2 {
+    margin: 0 0 var(--space-sm);
+    font: var(--font-error-page);
+  }
+
+  p {
+    margin: 0 0 70px;
+    font: var(--font-btn);
+    font-weight: 400;
+    opacity: 0.4;
+  }
+
+  main & {
+    height: 65vh;
+  }
+}

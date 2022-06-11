@@ -3,17 +3,18 @@ import {PropsWithChildren} from "react";
 
 import {useTypedDispatch, useTypedSelector} from "@/hooks";
 
-import {addToCart, addToFav, removeItemFromCart, removeItemFromFav} from "@/store/models/cart";
 import {getCart} from "@/store/models/cart/selectors";
+import {addToCart, addToFav, removeItemFromCart, removeItemFromFav} from "@/store/models/cart";
+
+import {getNormalPrice} from "@/lib";
 
 import {Button, Card} from "@/ui";
 import {AddIcon, AddedIcon, FavIcon} from '@/components';
 
 import s from './SneakerItem.module.scss';
 import {SneakerItemProps} from "./SneakerItem.props";
-import {getNormalPrice} from "../../lib/getNormalPrice";
 
-export const SneakerItem = ({item, className, ...props}: PropsWithChildren<SneakerItemProps>): JSX.Element => {
+export const SneakerItem = ({item, className, added, ...props}: PropsWithChildren<SneakerItemProps>): JSX.Element => {
     const dispatch = useTypedDispatch();
     const {cart, fav} = useTypedSelector(getCart);
 

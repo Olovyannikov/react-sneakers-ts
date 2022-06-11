@@ -29,7 +29,6 @@ export const Aside = ({children, className, isOpen, ...props}: AsideProps): JSX.
             <h2>Корзина</h2>
             {!cart.length && <CartEmpty/>}
             {cart.length && <CartFull items={cart}/>}
-            {children}
         </aside>
     )
 }

@@ -10,7 +10,7 @@ import s from './Menu.module.scss';
 import {MenuProps} from "./Menu.props";
 import {useTypedSelector} from "@/hooks";
 import {getTotalPrice} from "@/store/models/cart/selectors";
-import {getNormalPrice} from "../../lib/getNormalPrice";
+import {getNormalPrice} from "@/lib";
 
 export const Menu = ({}: MenuProps): JSX.Element => {
     const {setOpen} = useContext(DrawerCtx);
@@ -27,7 +27,7 @@ export const Menu = ({}: MenuProps): JSX.Element => {
             </li>
             {data.map(el =>
                 <li key={el.id}>
-                    <Link to='/'>
+                    <Link to={el.link}>
                         {el.icon}
                     </Link>
                 </li>

@@ -46,3 +46,45 @@
     border-radius: 8px;
   }
 }
+
+.cart {
+  display: flex;
+  flex-direction: column;
+}
+
+.footer {
+  display: flex;
+  flex-direction: column;
+  margin-top: auto;
+  gap: var(--space-md);
+
+  p {
+    margin: 0;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    white-space: nowrap;
+
+    &::before {
+      position: relative;
+      content: "";
+      margin: 0 var(--space-xs);
+      order: 1;
+      width: 100%;
+      top: -1px;
+      align-self: flex-end;
+      border: 0.1px dashed #DFDFDF;
+    }
+
+    b {
+      order: 2;
+    }
+  }
+}
+
+.orderBtn {
+  svg {
+    transform: rotate(180deg);
+  }
+}

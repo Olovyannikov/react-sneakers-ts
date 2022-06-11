@@ -1,3 +1,5 @@
+$xl: 1440px;
+
 @mixin font-face($font-family, $url, $weight, $style) {
   @font-face {
     src: url("../fonts/#{$url}.woff2") format("woff2");
@@ -31,5 +33,11 @@
 
   &:focus {
     outline: none;
+  }
+}
+
+@mixin xl-block {
+  @media (min-width: $xl) {
+    @content;
   }
 }

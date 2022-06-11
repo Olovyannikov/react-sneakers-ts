@@ -4,3 +4,4 @@ export {ReactComponent as AddIcon} from './add.svg';
 export {ReactComponent as AddedIcon} from './added.svg';
 export {ReactComponent as FavIcon} from './fav.svg';
 export {ReactComponent as HeartIcon} from './heart.svg';
+export {ReactComponent as ChevronIcon} from './chevron.svg';

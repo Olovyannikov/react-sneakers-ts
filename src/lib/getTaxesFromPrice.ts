@@ -1,0 +1,1 @@
+export const getTaxesFromPrice = (price: number, tax: number) => Math.floor((price / 100) * tax);

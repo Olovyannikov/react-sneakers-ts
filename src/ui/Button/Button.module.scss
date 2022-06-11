@@ -19,3 +19,9 @@
   color: var(--c-white);
   background-color: var(--c-primary);
 }
+
+.right {
+  svg {
+    order: 2;
+  }
+}
