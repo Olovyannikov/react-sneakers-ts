@@ -14,6 +14,7 @@ module.exports = {
             "@/page-components": path.join(path.resolve(__dirname, "./src/page-components/index.tsx")),
             "@/context": path.join(path.resolve(__dirname, "./src/context/index.tsx")),
             "@/store": path.join(path.resolve(__dirname, "./src/store")),
+            "@/services": path.join(path.resolve(__dirname, "./src/services/index.ts")),
         },
     },
 };

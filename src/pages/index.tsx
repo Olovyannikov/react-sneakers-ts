@@ -1,9 +1,8 @@
 import {Layout} from "@/layout";
 import {Container} from "@/ui";
-import {SneakersGrid} from "@/page-components";
+import {SneakersGrid} from "@/components";
 
 const IndexPage = (): JSX.Element => {
-
     return (
         <Layout>
             <Container>

@@ -1,11 +1,10 @@
 import cn from "classnames";
 
 import {useContext, useRef} from "react";
-import {useOnClickOutside, useTypedSelector} from "@/hooks";
+import {useOnClickOutside} from "@/hooks";
 
 import {DrawerCtx} from "@/context";
-
-import {getCart} from "@/store/models/cart/selectors";
+import {getCartService} from "@/services";
 
 import {CartEmpty, CartFull} from "@/components";
 
@@ -13,8 +12,8 @@ import s from './Aside.module.scss';
 import {AsideProps} from "./Aside.props";
 
 export const Aside = ({children, className, isOpen, ...props}: AsideProps): JSX.Element => {
+    const {data: cart} = getCartService.useFetchCartQuery(null);
     const {setOpen} = useContext(DrawerCtx);
-    const {cart} = useTypedSelector(getCart);
 
     const ref = useRef<HTMLDivElement>(null);
 
@@ -27,8 +26,8 @@ export const Aside = ({children, className, isOpen, ...props}: AsideProps): JSX.
             {...props}
         >
             <h2>Корзина</h2>
-            {!cart.length && <CartEmpty/>}
-            {cart.length && <CartFull items={cart}/>}
+            {cart && !cart.length && <CartEmpty/>}
+            {cart && <CartFull items={cart}/>}
         </aside>
     )
 }

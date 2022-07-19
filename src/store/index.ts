@@ -1,12 +1,17 @@
 import {combineReducers, configureStore} from "@reduxjs/toolkit";
-import {models} from "./models";
+import {getFavService, getCartService, getSneakersService} from "@/services";
 
 const rootReducer = combineReducers({
-    ...models,
+    [getSneakersService.reducerPath]: getSneakersService.reducer,
+    [getCartService.reducerPath]: getCartService.reducer,
+    [getFavService.reducerPath]: getFavService.reducer
 });
 
 export const store = configureStore({
-    reducer: rootReducer
+    reducer: rootReducer,
+    middleware: (getDefaultMiddleware) =>
+        getDefaultMiddleware()
+            .concat([getSneakersService.middleware, getFavService.middleware, getCartService.middleware])
 });
 
 export type RootState = ReturnType<typeof rootReducer>;

@@ -1,8 +1,5 @@
 import {useTypedDispatch, useTypedSelector} from "@/hooks";
 
-import {removeItemFromCart} from "@/store/models/cart";
-import {getTotalPrice} from "@/store/models/cart/selectors";
-
 import {getNormalPrice, getTaxesFromPrice} from "@/lib";
 
 import {Button} from "@/ui";
@@ -10,10 +7,15 @@ import {ArrowBack, CrossIcon} from "@/components";
 
 import s from './CartFull.module.scss';
 import {CartFullProps} from "./CartFull.props";
+import {SneakerModel} from "@/models";
+import {getCartService} from "@/services";
 
 export const CartFull = ({items}: CartFullProps): JSX.Element => {
-    const dispatch = useTypedDispatch();
-    const price = useTypedSelector(getTotalPrice);
+    const {data: cart} = getCartService.useFetchCartQuery(null);
+    const [removeCartItem, {}] =  getCartService.useDeleteItemFromCartMutation();
+    const price = cart && cart.reduce((acc, val) => acc += val.price, 0)
+
+    const onRemoveItemFromCartHandler = (item: SneakerModel) => removeCartItem(item);
 
     return (
         <form className={s.cart}>
@@ -26,13 +28,13 @@ export const CartFull = ({items}: CartFullProps): JSX.Element => {
                         </picture>
                         <p>{item.name}</p>
                         <b>{getNormalPrice(item.price)} руб.</b>
-                        <Button onClick={() => dispatch(removeItemFromCart(item))} icon={<CrossIcon/>}/>
+                        <Button onClick={() => onRemoveItemFromCartHandler(item)} icon={<CrossIcon/>}/>
                     </li>
                 ))}
             </ul>
-             <div className={s.footer}>
-                  <p>Итого: <b>{getNormalPrice(price)} руб.</b></p>
-                  <p>Налог 5%: <b>{getTaxesFromPrice(price, 5)} руб.</b></p>
+             <footer className={s.footer}>
+                  <p>Итого: <b>{getNormalPrice(price ?? 0)} руб.</b></p>
+                  <p>Налог 5%: <b>{getTaxesFromPrice(price ?? 0, 5)} руб.</b></p>
                   <Button
                       className={s.orderBtn}
                       type='submit'
@@ -42,7 +44,7 @@ export const CartFull = ({items}: CartFullProps): JSX.Element => {
                   >
                       Оформить заказ
                   </Button>
-             </div>
+             </footer>
         </form>
     )
 }
