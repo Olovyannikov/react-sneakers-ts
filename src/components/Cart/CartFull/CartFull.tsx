@@ -1,4 +1,4 @@
-import {useTypedDispatch, useTypedSelector} from "@/hooks";
+import {FormEvent} from "react";
 
 import {getNormalPrice, getTaxesFromPrice} from "@/lib";
 
@@ -8,17 +8,23 @@ import {ArrowBack, CrossIcon} from "@/components";
 import s from './CartFull.module.scss';
 import {CartFullProps} from "./CartFull.props";
 import {SneakerModel} from "@/models";
-import {getCartService} from "@/services";
+import {getCartService, getOrdersService} from "@/services";
 
 export const CartFull = ({items}: CartFullProps): JSX.Element => {
     const {data: cart} = getCartService.useFetchCartQuery(null);
     const [removeCartItem, {}] =  getCartService.useDeleteItemFromCartMutation();
-    const price = cart && cart.reduce((acc, val) => acc += val.price, 0)
+    const [createOrder, {}] = getOrdersService.useMakeOrderMutation();
+    const price = cart && cart.reduce((acc, val) => acc += val.price, 0);
 
     const onRemoveItemFromCartHandler = (item: SneakerModel) => removeCartItem(item);
+    const onSubmitCartHandler = (e: FormEvent<HTMLFormElement>) => {
+        e.preventDefault();
+        createOrder(items);
+        cart && cart.forEach(el => onRemoveItemFromCartHandler(el));
+    };
 
     return (
-        <form className={s.cart}>
+        <form className={s.cart} onSubmit={onSubmitCartHandler}>
             <ul className={s.list}>
                 {items.map(item => (
                     <li key={item.id} className={s.item}>

@@ -7,6 +7,6 @@ export const Heading = ({children, as = 'h2', className, ...props}: HeadingProps
     const Tag = as;
 
     return (
-        <Tag className={cn(s.title)} {...props}>{children}</Tag>
+        <Tag className={cn(s.title, className)} {...props}>{children}</Tag>
     )
 }

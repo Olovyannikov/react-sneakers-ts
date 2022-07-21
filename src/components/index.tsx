@@ -7,3 +7,4 @@ export * from './SneakersGrid/SneakersGrid';
 export * from './SneakersList/SneakersList';
 export * from './EmptySearch/EmptySearch';
 export * from './NotFound/NotFound';
+export * from './Cabinet/Cabinet';

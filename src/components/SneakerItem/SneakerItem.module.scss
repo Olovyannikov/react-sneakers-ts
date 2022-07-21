@@ -13,6 +13,10 @@
     transform: translateY(-2%);
     box-shadow: 0 14px 30px rgba(0, 0, 0, 0.05);
   }
+
+  &:only-child {
+    max-width: 240px;
+  }
 }
 
 .item h3 {

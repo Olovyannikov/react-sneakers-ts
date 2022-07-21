@@ -1,5 +1,5 @@
 import {ReactNode} from "react";
-import {IndexPage, CartPage, FavoritesPage, Error404Page} from '../pages/export';
+import {IndexPage, CartPage, FavoritesPage, Error404Page, CabinetPage} from '../pages/export';
 
 interface RouterModel {
     path: string;
@@ -22,5 +22,9 @@ export const router: RouterModel[] = [
     {
         path: '/favorites',
         component: <FavoritesPage/>
+    },
+    {
+        path: '/cabinet',
+        component: <CabinetPage/>
     }
 ]

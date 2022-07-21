@@ -5,10 +5,15 @@ import {ArrowBack} from "@/components";
 
 import {DrawerCtx} from "@/context";
 import s from './CartEmpty.module.scss';
+import {useNavigate} from "react-router-dom";
 
 export const CartEmpty = (): JSX.Element => {
     const {setOpen} = useContext(DrawerCtx);
-    const onBackButtonClickHandler = () => setOpen && setOpen(false);
+    const nav = useNavigate();
+    const onBackButtonClickHandler = () => {
+        setOpen && setOpen(false);
+        nav(-1);
+    };
 
      return (
         <div className={s.empty}>
