@@ -20,4 +20,8 @@
     flex-direction: column;
     gap: var(--space-sm);
   }
+
+  li ul + button {
+    margin-top: var(--space-sm);
+  }
 }

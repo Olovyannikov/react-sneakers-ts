@@ -1,0 +1,30 @@
+.info {
+  width: 285px;
+  height: auto;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.info img {
+  display: block;
+  margin-bottom: var(--space-md);
+}
+
+.info h3 {
+  margin: 0 0 var(--space-xs);
+  font: var(--font-bold);
+}
+
+.info p {
+  margin: 0 0 40px;
+  font: var(--font-light);
+  opacity: 0.4;
+}
+
+.info button {
+  max-width: 245px;
+}

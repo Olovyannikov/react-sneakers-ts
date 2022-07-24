@@ -14,11 +14,13 @@ export const Button = ({
                            color = 'none',
                            type = 'button',
                            iconPosition = 'left',
+                           size = 'md',
                            ...props
-}: PropsWithChildren<ButtonProps>): JSX.Element => {
+                       }: PropsWithChildren<ButtonProps>): JSX.Element => {
     if (href && href.length) {
         return (
-            <NavLink to={href} className={cn(className)}>
+            <NavLink to={href} className={cn(className, s[color])}>
+                {icon}
                 {children}
             </NavLink>
         )
@@ -27,7 +29,7 @@ export const Button = ({
     return (
         <button
             type={type}
-            className={cn(s.btn, s[color], s[iconPosition], className)}
+            className={cn(s.btn, s[color], s[iconPosition], s[size], className)}
             {...props}
         >
             {icon}

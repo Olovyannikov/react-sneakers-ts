@@ -4,6 +4,7 @@ type ButtonShape = 'round' | 'default';
 type ButtonIconElement = ReactNode;
 type ButtonIconPosition = 'left' | 'right' | 'center';
 type ButtonColor = 'primary' | 'none';
+type ButtonSize = 'sm' | 'md' | 'lg';
 
 export interface ButtonProps extends DetailedHTMLProps<ButtonHTMLAttributes<HTMLButtonElement>, HTMLButtonElement> {
     href?: string;
@@ -11,4 +12,5 @@ export interface ButtonProps extends DetailedHTMLProps<ButtonHTMLAttributes<HTML
     icon?: ButtonIconElement;
     iconPosition?: ButtonIconPosition;
     color?: ButtonColor;
+    size?: ButtonSize;
 }

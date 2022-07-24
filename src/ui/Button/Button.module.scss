@@ -1,5 +1,8 @@
 .btn {
-
+  &:disabled {
+    background-color: var(--c-grey-200);
+    cursor: not-allowed;
+  }
 }
 
 .none {
@@ -24,4 +27,14 @@
   svg {
     order: 2;
   }
+}
+
+// sizes
+
+.sm {
+  min-height: 40px;
+  font-size: 12px;
+  width: auto;
+  padding: 0 12px;
+  border-radius: var(--radius-md);
 }

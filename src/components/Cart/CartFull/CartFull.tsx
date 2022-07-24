@@ -13,14 +13,14 @@ import {getCartService, getOrdersService} from "@/services";
 export const CartFull = ({items}: CartFullProps): JSX.Element => {
     const {data: cart} = getCartService.useFetchCartQuery(null);
     const [removeCartItem, {}] =  getCartService.useDeleteItemFromCartMutation();
-    const [createOrder, {}] = getOrdersService.useMakeOrderMutation();
+    const [createOrder, {isLoading}] = getOrdersService.useMakeOrderMutation();
     const price = cart && cart.reduce((acc, val) => acc += val.price, 0);
 
     const onRemoveItemFromCartHandler = (item: SneakerModel) => removeCartItem(item);
     const onSubmitCartHandler = (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         createOrder(items);
-        cart && cart.forEach(el => onRemoveItemFromCartHandler(el));
+        cart && cart.forEach((el, idx) => onRemoveItemFromCartHandler(cart[idx]));
     };
 
     return (
@@ -47,6 +47,7 @@ export const CartFull = ({items}: CartFullProps): JSX.Element => {
                       color='primary'
                       icon={<ArrowBack/>}
                       iconPosition='right'
+                      disabled={isLoading}
                   >
                       Оформить заказ
                   </Button>
